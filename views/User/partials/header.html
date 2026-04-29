@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ PROJECT }}-{{ title }}</title>
+        <link rel="stylesheet" href="{{ url_for('static', path='User/style.css') }}">
+
+</head>
+<body>
+<div class="navbar">
+    <div>
+        Welcome, {{ request.session.get('user_name') }}
+    </div>
+    <div>
+        <a href="/logout" class="btn">Logout</a>
+    </div>
+</div>

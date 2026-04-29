@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ PROJECT }}-{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='User/login_register.css') }}"></head>
+<body>
+
+<div class="container">
+    <h2> </h2>
+
+    {% if flash %}
+        <div class="flash-{{ flash.category }}">
+            {{ flash.message }}
+        </div>
+    {% endif %}
+
+    <form method="post" action="/login">
+        <input type="email" name="email" placeholder="Enter Email" required>
+        <input type="password" name="password" placeholder="Enter Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <p style="margin-top:15px;">
+        Don't have an account? <a href="/register">Register Here</a>
+    </p>
+</div>
+
+</body>
+</html>

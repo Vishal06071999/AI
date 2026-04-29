@@ -1,0 +1,20 @@
+{% include "User/partials/header.html" %}
+
+<div class="container">
+
+    {% if flash %}
+        <div class="flash-{{ flash.category }}">
+            {{ flash.message }}
+        </div>
+    {% endif %}
+
+    <div class="card">
+        <h2>Dashboard</h2>
+        <p>You are successfully logged in 🎉</p>
+        <p>User ID: {{ request.session.get('user_id') }}</p>
+        <a href="assistant/">AI</a>
+    </div>
+    
+
+</div>
+{% include "User/partials/footer.html" %}
