@@ -39,7 +39,6 @@ pydantic==2.12.5
 pydantic_core==2.41.5
 PyJWT==2.11.0
 PyMySQL==1.1.2
-pyobjc-core==12.1
 pyobjc-framework-Accessibility==12.1
 pyobjc-framework-Accounts==12.1
 pyobjc-framework-AddressBook==12.1
