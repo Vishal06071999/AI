@@ -1,44 +1,34 @@
-import os
-import uvicorn
-
 from fastapi import FastAPI
+from config.database import engine
 from starlette.middleware.sessions import SessionMiddleware
+from routes.user_routes import router as user_router
+from config.config import Config
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from config.database import engine
-from config.config import Config
-from routes.user_routes import router as user_router
 
 app = FastAPI()
-
-# Static Files
 app.mount("/static", StaticFiles(directory="static"), name="static")
-
-# Templates
 templates = Jinja2Templates(directory="views")
-templates.env.globals['PROJECT'] = Config.PROJECT
-
-# Middleware
+templates.env.globals['PROJECT'] = Config.PROJECT  # Now PROJECT is available in all templates
+# Include Routes
 app.add_middleware(
     SessionMiddleware,
     secret_key=Config.SECRET_KEY
 )
 
-# Routes
+
 app.include_router(user_router)
 
-# Home Route
 @app.get("/")
 def home():
-    return {"message": "Voice Assistant is running 🚀"}
+    return {"message": "Voice Assistant is running"}
 
-# Optional Chrome DevTools Route
+# Optional: handle Chrome DevTools requests to avoid 404 logs
 @app.get("/.well-known/appspecific/com.chrome.devtools.json")
 def chrome_devtools_config():
     return {}
 
-# Run Server
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+# @app.get("/")
+# def home():
+#     return {"message": "MySQL Connected Successfully 🚀"}
