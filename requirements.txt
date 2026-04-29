@@ -35,14 +35,10 @@ packaging==26.2
 passlib==1.7.4
 pillow==12.1.1
 propcache==0.4.1
-PyAutoGUI==0.9.54
 pydantic==2.12.5
 pydantic_core==2.41.5
-PyGetWindow==0.0.9
 PyJWT==2.11.0
-PyMsgBox==2.0.1
 PyMySQL==1.1.2
-pyobjc==12.1
 pyobjc-core==12.1
 pyobjc-framework-Accessibility==12.1
 pyobjc-framework-Accounts==12.1
